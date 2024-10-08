@@ -2,7 +2,7 @@
 
 Welcome to the FusionSent repository. FusionSent is an efficient few-shot learning model designed for multi-label classification of scientific documents with many classes. 
 
-![Training Process of FusionSent](./FusionSent_visualization.png)
+![Training Process of FusionSent](./figures/FusionSent_visualization.png)
 
 **Figure 1**: The training process of FusionSent comprises three steps:
 
@@ -114,9 +114,27 @@ print(predictions)
 
 For a more elaborate example, please refer to the [Jupyter notebook of a Description-Embedding Experiment](./Evaluate_Description-Embedding_Body.ipynb).
 
+## arXiv Categories Dataset
+
+**Dataset is available at:** [https://huggingface.co/datasets/TimSchopf/arxiv_categories](https://huggingface.co/datasets/TimSchopf/arxiv_categories)
+
+For evaluation of FusionSent, we constructed a dataset of scientific documents derived from arXiv metadata. The arXiv metadata provides information about more than 2 million scholarly articles published in arXiv from various scientific fields. We use this metadata to create a dataset of 183,565 titles and abstracts categorized into 130 different classes. To this end, we first perform a stratified downsampling of the metadata to only 10% of all articles while retaining the original class distribution. Afterward, articles assigned to categories occurring less than 100 times in the downsampled dataset are removed. To obtain the final dataset, we then perform a stratified train/validation/test split of the processed dataset in an 80:10:10 ratio. The number of examples in each set is shown below.
+
+| Split       | Number of Samples |
+|:-----------:|:-----------------:|
+| Train       | 163,168           |
+| Validation  | 20,396            |
+| Test        | 20,397            |
+
+
+Each article in the resulting arXiv dataset is categorized into one or more distinct categories. THe figure below shows the distribution of papers across the 130 categories of the dataset.
+
+![arXiv Dataset Class Distribution](./figures/arxiv_plot.png)
+
+
 ## Citation
 
-If you use FusionSent in your research, please cite the following paper:
+When citing our work in academic papers and theses, please use this BibTeX entry:
 
 ```bibtex
 @article{...,
