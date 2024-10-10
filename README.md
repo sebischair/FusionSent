@@ -2,6 +2,10 @@
 
 Welcome to the FusionSent repository. FusionSent is an efficient few-shot learning model designed for multi-label classification of scientific documents with many classes. 
 
+📄 Paper: [Efficient Few-shot Learning for Multi-label Classification of Scientific Documents with Many Classes (ICNLSP 2024)](https://arxiv.org/abs/2410.05770)
+
+💾 Data: [https://huggingface.co/datasets/TimSchopf/arxiv_categories](https://huggingface.co/datasets/TimSchopf/arxiv_categories)
+
 ![Training Process of FusionSent](./figures/FusionSent_visualization.png)
 
 **Figure 1**: The training process of FusionSent comprises three steps:
@@ -12,7 +16,7 @@ Welcome to the FusionSent repository. FusionSent is an efficient few-shot learni
 2. Merge parameter sets θ₁, θ₂ into θ₃ using Spherical Linear Interpolation (SLERP).
 3. Freeze θ₃ to embed the training sentences, which are then used as input features to train a classification head.
 
-By fine-tuning sentence embedding models using contrastive learning, FusionSent achieves high performance even with limited labeled data. The model initially leverages two distinct sub-models: one, using regular contrastive learning with item pairs (['setfit'](https://github.com/huggingface/setfit)), and another using label embeddings with class-description pairs ('label_embedding'). These two models are then fused, via (spherical) linear intterpolation, to create the robost FusionSent model that excels in diverse classification tasks. For detailed insights into the model and its performance, please refer to our [published paper](#).
+By fine-tuning sentence embedding models using contrastive learning, FusionSent achieves high performance even with limited labeled data. The model initially leverages two distinct sub-models: one, using regular contrastive learning with item pairs (['setfit'](https://github.com/huggingface/setfit)), and another using label embeddings with class-description pairs ('label_embedding'). These two models are then fused, via (spherical) linear intterpolation, to create the robost FusionSent model that excels in diverse classification tasks. For detailed insights into the model and its performance, please refer to our [published paper](https://arxiv.org/abs/2410.05770).
 
 ## Overview
 
@@ -137,11 +141,14 @@ Each article in the resulting arXiv dataset is categorized into one or more dist
 When citing our work in academic papers and theses, please use this BibTeX entry:
 
 ```bibtex
-@article{...,
-  title={...},
-  author={...},
-  journal={...},
-  year={...}
+@misc{schopf2024efficientfewshotlearningmultilabel,
+      title={Efficient Few-shot Learning for Multi-label Classification of Scientific Documents with Many Classes}, 
+      author={Tim Schopf and Alexander Blatzheim and Nektarios Machner and Florian Matthes},
+      year={2024},
+      eprint={2410.05770},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2410.05770}, 
 }
 ```
 
