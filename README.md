@@ -122,7 +122,7 @@ For a more elaborate example, please refer to the [Jupyter notebook of a Descrip
 
 **Dataset is available at:** [https://huggingface.co/datasets/TimSchopf/arxiv_categories](https://huggingface.co/datasets/TimSchopf/arxiv_categories)
 
-For evaluation of FusionSent, we constructed a dataset of scientific documents derived from arXiv metadata. The arXiv metadata provides information about more than 2 million scholarly articles published in arXiv from various scientific fields. We use this metadata to create a dataset of 183,565 titles and abstracts categorized into 130 different classes. To this end, we first perform a stratified downsampling of the metadata to only 10% of all articles while retaining the original class distribution. Afterward, articles assigned to categories occurring less than 100 times in the downsampled dataset are removed. To obtain the final dataset, we then perform a stratified train/validation/test split of the processed dataset in an 80:10:10 ratio. The number of examples in each set is shown below.
+For evaluation of FusionSent, we constructed a dataset of scientific documents derived from arXiv metadata. The arXiv metadata provides information about more than 2 million scholarly articles published in arXiv from various scientific fields. We use this metadata to create a dataset of 203,961 titles and abstracts categorized into 130 different classes. To this end, we first perform a stratified downsampling of the metadata to only 10% of all articles while retaining the original class distribution. Afterward, articles assigned to categories occurring less than 100 times in the downsampled dataset are removed. To obtain the final dataset, we then perform a stratified train/validation/test split of the processed dataset in an 80:10:10 ratio. The number of examples in each set is shown below.
 
 | Split       | Number of Samples |
 |:-----------:|:-----------------:|
@@ -131,7 +131,7 @@ For evaluation of FusionSent, we constructed a dataset of scientific documents d
 | Test        | 20,397            |
 
 
-Each article in the resulting arXiv dataset is categorized into one or more distinct categories. THe figure below shows the distribution of papers across the 130 categories of the dataset.
+Each article in the resulting arXiv dataset is categorized into one or more distinct categories. The figure below shows the distribution of papers across the 130 categories of the dataset.
 
 ![arXiv Dataset Class Distribution](./figures/arxiv_plot.png)
 
