@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="fusionsent",
-    version="0.0.8",
+    version="0.0.9",
     author="Tim Schopf, Alexander Blatzheim",
     author_email="tim.schopf@tum.de, alexander.blatzheim@tum.de",
     description="FusionSent: A Fusion-Based Multi-Task Sentence Embedding Model",

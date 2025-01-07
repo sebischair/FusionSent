@@ -19,6 +19,7 @@ from sentence_transformers import InputExample, losses
 from setfit.losses import SupConLoss
 import gc
 import json
+import psutil
 
 from .training_args import TrainingArguments
 from .modeling import FusionSentModel
@@ -195,6 +196,18 @@ class Trainer(ColumnMappingMixin):
                     margin=args.setfit_margin,
                 )
         else:
+            # Estimate memory requirement for sampleing idxs within setfit.sampler.shuffle_combinations
+            # and log a warning in case memory might not be sufficient.
+            n = len(input_data)
+            num_combinations = n * (n + 1) // 2
+            memory_required = num_combinations * 2 * np.dtype(np.int64).itemsize  # Two arrays of int64 indices
+            available_memory = psutil.virtual_memory().available
+            if memory_required > available_memory * 0.8:  # Reserve 20% for system processes
+                logger.warning(
+                    f" Likley insufficient memory to create ContrastiveDataset (n={n}). Process might be killed."
+                    f" Estimated: {memory_required / (1024**3):.2f} GB, Available: {available_memory / (1024**3):.2f} GB. "
+                )
+
             data_sampler = ContrastiveDataset(
                 examples=input_data,
                 multilabel=Trainer._has_any_multilabel(input_data),
